@@ -16,9 +16,9 @@ import groovy.json.JsonOutput
        description: 'Credentials to use for downloading tools from artifactory.  A default is provided.',
        default: null, ]
  */
-/*def downloadArtifact(config, toolsArtifactPath){
+def downloadArtifact(config, toolsArtifactPath){
     
-    def server = Artifactory.newServer url: config.artifactoryServerURL, credentialsId: artifactoryCred
+    def server = 'https://download.oracle.com/otn/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz'
     def downloadSpec = JsonOutput.toJson([
             files: [
                     [
@@ -30,7 +30,7 @@ import groovy.json.JsonOutput
 
     def downloadInfo = server.download spec: downloadSpec
     downloadInfo
-}*/
+}
 
 /**
  * downloads package from artifactory and untar's content in to the jenkins workspace and return folder path
