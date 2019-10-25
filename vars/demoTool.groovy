@@ -64,7 +64,7 @@ def untarDownloadedFile(relPathWithfileName){
    def absPathWithFileName = env.WORKSPACE + '/' + relPathWithfileName
    def absPath = '/usr/bin'
    def toolFolderName = sh (returnStdout: true, script:  """
-                            FOLDER_NAME=`tar tzf "${absPathWithFileName}" | sed -e 's@/.*@@' | uniq`
+                            FOLDER_NAME=`tar xf "${absPathWithFileName}" | sed -e 's@/.*@@' | uniq`
                             tar -zxf ${absPathWithFileName} -C ${absPath}
                             rm $absPathWithFileName
                             echo "\$FOLDER_NAME"
