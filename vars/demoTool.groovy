@@ -67,7 +67,7 @@ def untarDownloadedFile(relPathWithfileName){
    def absPath = '/usr/bin'
    def toolFolderName = sh (returnStdout: true, script:  """
                             FOLDER_NAME=`tar tf "${absPathWithFileName}" | sed -e 's@/.*@@' | uniq`
-                            tar -xvf ${absPathWithFileName} -C ${absPath}
+                            tar -xvzf ${absPathWithFileName} -C ${absPath}
                             rm $absPathWithFileName
                             echo "\$FOLDER_NAME"
                         """).tokenize().last()
