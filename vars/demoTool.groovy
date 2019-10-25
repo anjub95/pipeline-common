@@ -16,7 +16,7 @@ import groovy.json.JsonOutput
        description: 'Credentials to use for downloading tools from artifactory.  A default is provided.',
        default: null, ]
  */
-def downloadArtifact(config, toolsArtifactPath){
+/*def downloadArtifact(config, toolsArtifactPath){
     
     def server = Artifactory.newServer url: config.artifactoryServerURL, credentialsId: artifactoryCred
     def downloadSpec = JsonOutput.toJson([
@@ -30,7 +30,7 @@ def downloadArtifact(config, toolsArtifactPath){
 
     def downloadInfo = server.download spec: downloadSpec
     downloadInfo
-}
+}*/
 
 /**
  * downloads package from artifactory and untar's content in to the jenkins workspace and return folder path
@@ -41,7 +41,6 @@ def downloadArtifact(config, toolsArtifactPath){
 def downloadInstallTool(config, toolName){
     if(!env[toolName]){
         def toolsArtifactPath = getToolArtifactoryPath(toolName)
-        downloadArtifact(config, toolsArtifactPath)
         def relPathWithfileName = "${toolsArtifactPath}"
         def toolFolderPath = untarDownloadedFile(relPathWithfileName)
         echo "toolFolderPath in workspace: ${toolFolderPath}"
