@@ -76,8 +76,10 @@ def untarDownloadedFile(relPathWithfileName){
  * @return path for toolname specified.
  */
 def getToolArtifactoryPath(toolName){
-    library 'pipeline-config'
-    props = readJSON file: 'allowed-tools.json'
+    dir('pipeline-config'){ //CLONE REPO INTO A FOLDER NAMED pipeline-config ON JENKINS WORKSPACE
+        git url:'https://github.com/anjub95/pipeline-config.git'
+    }
+    props = readJSON file: 'pipeline-config/allowed-tools.json'
     if(!props[toolName]){
         currentBuild.result = 'ABORTED'
         error "Tool path not found.  Make sure tool has been configured in allowed-tools.json."
