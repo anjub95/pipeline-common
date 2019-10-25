@@ -18,7 +18,7 @@ import groovy.json.JsonOutput
  */
 def downloadArtifact(config, toolsArtifactPath){
     
-    def server = 'https://download.oracle.com/otn/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz'
+    def server = 'wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz'
     def downloadSpec = JsonOutput.toJson([
             files: [
                     [
@@ -41,6 +41,7 @@ def downloadArtifact(config, toolsArtifactPath){
 def downloadInstallTool(config, toolName){
     if(!env[toolName]){
         def toolsArtifactPath = getToolArtifactoryPath(toolName)
+        downloadArtifact(config, toolsArtifactPath)
         def relPathWithfileName = "${toolsArtifactPath}"
         def toolFolderPath = untarDownloadedFile(relPathWithfileName)
         echo "toolFolderPath in workspace: ${toolFolderPath}"
