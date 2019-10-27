@@ -23,7 +23,7 @@ def downloadArtifact(config, toolsArtifactPath){
         sh 'file ./tools/oracle-jdk/jdk-8u131-linux-x64.tar.gz'
         sh 'cd tools/oracle-jdk'
         sh 'ls -ltr'
-    sh 'wget -c --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz -P '+ out
+    sh 'wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz -P '+ out
         
     //sh 'curl -L http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz -o ' + out
         /* def downloadSpec = JsonOutput.toJson([
