@@ -23,7 +23,7 @@ def downloadArtifact(config, toolsArtifactPath){
           sh 'wget -nc http://ftp.osuosl.org/pub/gentoo/distfiles/OpenJDK8U-jdk_x64_linux_hotspot_8u222b10.tar.gz -P '+ out_java
     def out_maven = './tools/apache-maven'
         sh 'mkdir -p ./tools/apache-maven'
-        sh 'mkdir ./mavenjava_extract'
+        sh 'mkdir -p ./mavenjava_extract'
         //sh 'file ./tools/oracle-jdk/jdk-8u131-linux-x64.tar.gz'
         sh 'ls -ltr /var/lib/jenkins/workspace/SharedLibrary_pipeline/tools/apache-maven/apache-maven-3.3.9-bin.tar.gz'
     //sh 'wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz -P '+ out
