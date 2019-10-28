@@ -24,6 +24,7 @@ def downloadArtifact(config, toolsArtifactPath){
         //sh 'file ./tools/oracle-jdk/jdk-8u131-linux-x64.tar.gz'
         sh 'pwd'
         sh 'ls -ltr /var/lib/jenkins/workspace/SharedLibrary_pipeline/tools/apache-maven/apache-maven-3.3.9-bin.tar.gz'
+        sh 'ls -ltr /usr/bin'
     //sh 'wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz -P '+ out
        sh 'wget -nc https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.3.9/apache-maven-3.3.9-bin.tar.gz -P '+ out 
        sh 'chmod 777 ./tools/apache-maven/apache-maven-3.3.9-bin.tar.gz'
