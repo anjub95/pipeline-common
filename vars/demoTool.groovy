@@ -19,6 +19,7 @@ import groovy.json.JsonOutput
 def downloadArtifact(config, toolsArtifactPath){
     
     def out = './tools/apache-maven'
+        sh 'pwd'
         sh 'mkdir -p ./tools/apache-maven'
         //sh 'file ./tools/oracle-jdk/jdk-8u131-linux-x64.tar.gz'
         sh 'cd tools/apache-maven'
