@@ -67,7 +67,7 @@ def untarDownloadedFile(relPathWithfileName){
    def absPath = '/usr/bin'
    def toolFolderName = sh (returnStdout: true, script:  """
                             FOLDER_NAME=`tar tf "${absPathWithFileName}" | sed -e 's@/.*@@' | uniq`
-                            tar -xvzf ${absPathWithFileName} -C ${absPath}
+                            tar -xvzf /var/lib/jenkins/workspace/SharedLibrary_pipeline/tools/apache-maven/apache-maven-3.3.9-bin.tar.gz.3 -C ${absPath}
                             rm $absPathWithFileName
                             echo "\$FOLDER_NAME"
                         """).tokenize().last()
