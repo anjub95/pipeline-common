@@ -17,16 +17,17 @@ import groovy.json.JsonOutput
        default: null, ]
  */
 def downloadArtifact(config, toolsArtifactPath){
-    
-    def out = './tools/apache-maven'
-        sh 'pwd'
+    def out_java = './tools/oracle-jdk'
+        sh 'mkdir -p ./tools/oracle-jdk'
+        sh 'wget --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie;" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/jdk-8u131-linux-x64.tar.gz -P '+ out_java      
+  
+    def out_maven = './tools/apache-maven'
         sh 'mkdir -p ./tools/apache-maven'
-        sh 'mkdir ./maven_extract'
+        sh 'mkdir ./mavenjava_extract'
         //sh 'file ./tools/oracle-jdk/jdk-8u131-linux-x64.tar.gz'
-        sh 'pwd'
         sh 'ls -ltr /var/lib/jenkins/workspace/SharedLibrary_pipeline/tools/apache-maven/apache-maven-3.3.9-bin.tar.gz'
     //sh 'wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz -P '+ out
-       sh 'wget -nc https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.3.9/apache-maven-3.3.9-bin.tar.gz -P '+ out 
+       sh 'wget -nc https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.3.9/apache-maven-3.3.9-bin.tar.gz -P '+ out_maven 
        sh 'chmod 777 ./tools/apache-maven/apache-maven-3.3.9-bin.tar.gz'
         //sh 'curl -L http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz -o ' + out
         /* def downloadSpec = JsonOutput.toJson([
@@ -67,7 +68,7 @@ def downloadInstallTool(config, toolName){
  */
 def untarDownloadedFile(relPathWithfileName){
    def absPathWithFileName = env.WORKSPACE + '/' + relPathWithfileName
-   def absPath = '/var/lib/jenkins/workspace/SharedLibrary_pipeline/maven_extract'
+   def absPath = '/var/lib/jenkins/workspace/SharedLibrary_pipeline/mavenjava_extract'
    def toolFolderName = sh (returnStdout: true, script:  """
                             FOLDER_NAME=`tar tzf "${absPathWithFileName}" | sed -e 's@/.*@@' | uniq`
                             tar -zxf /var/lib/jenkins/workspace/SharedLibrary_pipeline/tools/apache-maven/apache-maven-3.3.9-bin.tar.gz -C ${absPath}
