@@ -26,7 +26,7 @@ def downloadArtifact(config, toolsArtifactPath){
         sh 'ls -ltr'
     //sh 'wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz -P '+ out
        sh 'wget --no-check-certificate https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.3.9/apache-maven-3.3.9-bin.tar.gz -P '+ out 
-       sh 'chmod 777 ./tools/apache-maven/apache-maven-3.3.9-bin.tar.gz.5'
+       sh 'chmod 777 ./tools/apache-maven/apache-maven-3.3.9-bin.tar.gz.7'
         //sh 'curl -L http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz -o ' + out
         /* def downloadSpec = JsonOutput.toJson([
             files: [
@@ -69,7 +69,7 @@ def untarDownloadedFile(relPathWithfileName){
    def absPath = '/usr/bin'
    def toolFolderName = sh (returnStdout: true, script:  """
                             FOLDER_NAME=`tar tzf "${absPathWithFileName}" | sed -e 's@/.*@@' | uniq`
-                            tar -zxf /var/lib/jenkins/workspace/SharedLibrary_pipeline/tools/apache-maven/apache-maven-3.3.9-bin.tar.gz.5 -C ${absPath}
+                            tar -zxf /var/lib/jenkins/workspace/SharedLibrary_pipeline/tools/apache-maven/apache-maven-3.3.9-bin.tar.gz.7 -C ${absPath}
                             rm $absPathWithFileName
                             echo "\$FOLDER_NAME"
                         """).tokenize().last()
