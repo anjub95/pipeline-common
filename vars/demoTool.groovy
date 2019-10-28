@@ -20,7 +20,7 @@ def downloadArtifact(config, toolsArtifactPath){
     def out_java = './tools/oracle-jdk'
         sh 'mkdir -p ./tools/oracle-jdk'
         //sh 'wget --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie;" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/jdk-8u131-linux-x64.tar.gz -P '+ out_java      
-          sh 'wget http://ftp.osuosl.org/pub/gentoo/distfiles/OpenJDK8U-jdk_x64_linux_hotspot_8u222b10.tar.gz -P '+ out_java
+          sh 'wget -nc http://ftp.osuosl.org/pub/gentoo/distfiles/OpenJDK8U-jdk_x64_linux_hotspot_8u222b10.tar.gz -P '+ out_java
     def out_maven = './tools/apache-maven'
         sh 'mkdir -p ./tools/apache-maven'
         sh 'mkdir ./mavenjava_extract'
