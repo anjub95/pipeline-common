@@ -29,7 +29,7 @@ def downloadArtifact(config, toolsArtifactPath){
     //sh 'wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz -P '+ out
        sh 'wget -nc https://repo.maven.apache.org/maven2/org/apache/maven/apache-maven/3.3.9/apache-maven-3.3.9-bin.tar.gz -P '+ out_maven 
        sh 'chmod 777 ./tools/apache-maven/apache-maven-3.3.9-bin.tar.gz'
-        sh 'ls -ltr /var/lib/jenkins/workspace/SharedLibrary_pipeline/tools/apache-maven/apache-maven-3.3.9-bin.tar.gz'
+        sh 'ls -ltr ./tools/apache-maven/apache-maven-3.3.9-bin.tar.gz'
         //sh 'curl -L http://download.oracle.com/otn-pub/java/jdk/8u131-b11/d54c1d3a095b4ff2b6607d096fa80163/jdk-8u131-linux-x64.tar.gz -o ' + out
         /* def downloadSpec = JsonOutput.toJson([
             files: [
@@ -69,7 +69,7 @@ def downloadInstallTool(config, toolName){
  */
 def untarDownloadedFile(relPathWithfileName){
    def absPathWithFileName = env.WORKSPACE + '/' + relPathWithfileName
-   def absPath = '/var/lib/jenkins/workspace/SharedLibrary_pipeline/mavenjava_extract'
+   def absPath = './mavenjava_extract'
    def toolFolderName = sh (returnStdout: true, script:  """
                             FOLDER_NAME=`tar tzf "${absPathWithFileName}" | sed -e 's@/.*@@' | uniq`
                             tar -zxf ${absPathWithFileName} -C ${absPath}
